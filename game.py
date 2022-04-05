@@ -7,6 +7,10 @@ class Game:
     RESULT = ""
     DEUCE = "Deuce"
 
+    playerAdvantaged = self.p1points > self.p2points and self.p2points >= 3
+
+    playerWin = self.p1points>=4 and self.p2points>=0 and (self.p1points-self.p2points)>=2
+
     def __init__(self, player1Name, player2Name):
         self.player1Name = player1Name
         self.player2Name = player2Name
@@ -76,16 +80,17 @@ class Game:
                 P1res=THIRTY
             RESULT = P1res + "-" + P2res
         
-        if (self.p1points > self.p2points and self.p2points >= 3):
+        if (playerAdvantaged):
             RESULT = "Advantage " + self.player1Name
-        
-        if (self.p2points > self.p1points and self.p1points >= 3):
-            RESULT = "Advantage " + self.player2Name
-        
-        if (self.p1points > self.p2points):
-            return self.vitoriaPlayer1()
         else:
-            return self.vitoriaPlayer2()
+            RESULT = "Advantage " + self.player2Name
+        return RESULT
+        
+        if (playerWin):
+            RESULT = "Win for " + self.player1Name
+        else:
+            RESULT = "Win for " + self.player2Name
+        return RESULT
     
     def SetP1Score(self, number):
         for i in range(number):
@@ -101,13 +106,3 @@ class Game:
     
     def P2Score(self):
         self.p2points +=1
-
-    def vitoriaPlayer1(self):
-        if (self.p1points>=4 and self.p2points>=0 and (self.p1points-self.p2points)>=2):
-            RESULT = "Win for " + self.player1Name
-        return RESULT
-
-    def vitoriaPlayer2(self):
-        if (self.p2points>=4 and self.p1points>=0 and (self.p2points-self.p1points)>=2):
-            RESULT = "Win for " + self.player2Name
-        return RESULT
