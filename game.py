@@ -4,6 +4,8 @@ class Game:
     FIFTEEN = "Fifteen"
     THIRTY = "Thirty"
     FORTY = "Forty"
+    RESULT = ""
+    DEUCE = "Deuce"
 
     def __init__(self, player1Name, player2Name):
         self.player1Name = player1Name
@@ -18,17 +20,16 @@ class Game:
             self.P2Score()
     
     def score(self):
-        result = ""
         if (self.p1points == self.p2points and self.p1points < 3):
             if (self.p1points==0):
-                result = LOVE
+                RESULT = LOVE
             if (self.p1points==1):
-                result = FIFTEEN
+                RESULT = FIFTEEN
             if (self.p1points==2):
-                result = THIRTY
-            result += "-All"
+                RESULT = THIRTY
+            RESULT += "-All"
         if (self.p1points==self.p2points and self.p1points>2):
-            result = "Deuce"
+            RESULT = DEUCE
         
         P1res = ""
         P2res = ""
@@ -41,7 +42,7 @@ class Game:
                 P1res = FORTY
             
             P2res = LOVE
-            result = P1res + "-" + P2res
+            RESULT = P1res + "-" + P2res
         if (self.p2points > 0 and self.p1points==0):
             if (self.p2points==1):
                 P2res = FIFTEEN
@@ -51,7 +52,7 @@ class Game:
                 P2res = FORTY
             
             P1res = LOVE
-            result = P1res + "-" + P2res
+            RESULT = P1res + "-" + P2res
         
         
         if (self.p1points>self.p2points and self.p1points < 4):
@@ -63,7 +64,7 @@ class Game:
                 P2res=FIFTEEN
             if (self.p2points==2):
                 P2res=THIRTY
-            result = P1res + "-" + P2res
+            RESULT = P1res + "-" + P2res
         if (self.p2points>self.p1points and self.p2points < 4):
             if (self.p2points==2):
                 P2res=THIRTY
@@ -73,19 +74,19 @@ class Game:
                 P1res=FIFTEEN
             if (self.p1points==2):
                 P1res=THIRTY
-            result = P1res + "-" + P2res
+            RESULT = P1res + "-" + P2res
         
         if (self.p1points > self.p2points and self.p2points >= 3):
-            result = "Advantage " + self.player1Name
+            RESULT = "Advantage " + self.player1Name
         
         if (self.p2points > self.p1points and self.p1points >= 3):
-            result = "Advantage " + self.player2Name
+            RESULT = "Advantage " + self.player2Name
         
         if (self.p1points>=4 and self.p2points>=0 and (self.p1points-self.p2points)>=2):
-            result = "Win for " + self.player1Name
+            RESULT = "Win for " + self.player1Name
         if (self.p2points>=4 and self.p1points>=0 and (self.p2points-self.p1points)>=2):
-            result = "Win for " + self.player2Name
-        return result
+            RESULT = "Win for " + self.player2Name
+        return RESULT
     
     def SetP1Score(self, number):
         for i in range(number):
