@@ -82,11 +82,10 @@ class Game:
         if (self.p2points > self.p1points and self.p1points >= 3):
             RESULT = "Advantage " + self.player2Name
         
-        if (self.p1points>=4 and self.p2points>=0 and (self.p1points-self.p2points)>=2):
-            RESULT = "Win for " + self.player1Name
-        if (self.p2points>=4 and self.p1points>=0 and (self.p2points-self.p1points)>=2):
-            RESULT = "Win for " + self.player2Name
-        return RESULT
+        if (self.p1points > self.p2points):
+            return self.vitoriaPlayer1()
+        else:
+            return self.vitoriaPlayer2()
     
     def SetP1Score(self, number):
         for i in range(number):
@@ -102,3 +101,13 @@ class Game:
     
     def P2Score(self):
         self.p2points +=1
+
+    def vitoriaPlayer1(self):
+        if (self.p1points>=4 and self.p2points>=0 and (self.p1points-self.p2points)>=2):
+            RESULT = "Win for " + self.player1Name
+        return RESULT
+
+    def vitoriaPlayer2(self):
+        if (self.p2points>=4 and self.p1points>=0 and (self.p2points-self.p1points)>=2):
+            RESULT = "Win for " + self.player2Name
+        return RESULT
