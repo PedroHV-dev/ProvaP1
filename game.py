@@ -59,18 +59,17 @@ class Game:
             P1res = LOVE
             RESULT = P1res + "-" + P2res
         
-        
-        if (self.p1points>self.p2points and self.p1points < 4):
-            if (self.p1points==2):
-                P1res=THIRTY
-            if (self.p1points==3):
-                P1res=FORTY
-            if (self.p2points==1):
-                P2res=FIFTEEN
-            if (self.p2points==2):
-                P2res=THIRTY
-            RESULT = P1res + "-" + P2res
         if (playerAdvantaged1 and self.p1points < 4):
+            if (self.p1points==2):
+                P2res=THIRTY
+            elif (self.p1points==3):
+                P2res=FORTY
+            elif (self.p2points==1):
+                P1res=FIFTEEN
+            elif (self.p2points==2):
+                P1res=THIRTY
+            RESULT = P1res + "-" + P2res
+        if (playerAdvantaged2 and self.p2points < 4):
             if (self.p2points==2):
                 P2res=THIRTY
             elif (self.p2points==3):
