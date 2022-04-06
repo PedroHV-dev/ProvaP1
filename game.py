@@ -32,8 +32,8 @@ class Game:
             if (self.p1points==2):
                 RESULT = THIRTY
             RESULT += "-All"
-        if (self.p1points==self.p2points and self.p1points>2):
-            RESULT = DEUCE
+        else:
+            return DEUCE
         
         P1res = ""
         P2res = ""
