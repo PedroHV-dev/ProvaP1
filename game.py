@@ -24,14 +24,16 @@ class Game:
             self.P2Score()
     
     def score(self):
-        if (self.p1points == self.p2points and self.p1points < 3):
-            if (self.p1points==0):
+
+        pontosPlayer1 = ""
+        pontosPlayer2 = ""
+        if (self.empate() and self.pontosPlayer1 < 3):
+            if (self.pontosPlayer1==0):
                 RESULT = LOVE
-            if (self.p1points==1):
+            elif (self.pontosPlayer1==1):
                 RESULT = FIFTEEN
-            if (self.p1points==2):
-                RESULT = THIRTY
-            RESULT += "-All"
+            elif (self.pontosPlayer1==2):
+                RESULT = THIRTY + "ALL"
         else:
             return DEUCE
         
@@ -106,3 +108,7 @@ class Game:
     
     def P2Score(self):
         self.p2points +=1
+
+    def empate(self):
+        return self.pontosPlayer1 == self.pontosPlayer2
+
