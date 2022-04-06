@@ -7,7 +7,8 @@ class Game:
     RESULT = ""
     DEUCE = "Deuce"
 
-    playerAdvantaged = self.p1points > self.p2points and self.p2points >= 3
+    playerAdvantaged1 = self.p1points > self.p2points and self.p2points >= 3
+    playerAdvantaged2 = self.p2points > self.p1points and self.p1points >= 3
 
     playerWin = self.p1points>=4 and self.p2points>=0 and (self.p1points-self.p2points)>=2
 
@@ -71,18 +72,18 @@ class Game:
             if (self.p2points==2):
                 P2res=THIRTY
             RESULT = P1res + "-" + P2res
-        if (self.p2points>self.p1points and self.p2points < 4):
+        if (playerAdvantaged1 and self.p1points < 4):
             if (self.p2points==2):
                 P2res=THIRTY
-            if (self.p2points==3):
+            elif (self.p2points==3):
                 P2res=FORTY
-            if (self.p1points==1):
+            elif (self.p1points==1):
                 P1res=FIFTEEN
-            if (self.p1points==2):
+            elif (self.p1points==2):
                 P1res=THIRTY
             RESULT = P1res + "-" + P2res
         
-        if (playerAdvantaged):
+        if (playerAdvantaged1):
             RESULT = "Advantage " + self.player1Name
         else:
             RESULT = "Advantage " + self.player2Name
@@ -111,4 +112,7 @@ class Game:
 
     def empate(self):
         return self.pontosPlayer1 == self.pontosPlayer2
+    
+    def acabou(self):
+        return self.pontosPlayer1 >= 4 or self.pontosPlayer2 >= 4 
 
