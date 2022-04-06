@@ -10,8 +10,6 @@ class Game:
     playerAdvantaged1 = self.p1points > self.p2points and self.p2points >= 3
     playerAdvantaged2 = self.p2points > self.p1points and self.p1points >= 3
 
-    playerWin = self.p1points>=4 and self.p2points>=0 and (self.p1points-self.p2points)>=2
-
     def __init__(self, player1Name, player2Name):
         self.player1Name = player1Name
         self.player2Name = player2Name
@@ -89,7 +87,7 @@ class Game:
             RESULT = "Advantage " + self.player2Name
         return RESULT
         
-        if (playerWin):
+        if (self.pontosPlayer1 >= 4):
             RESULT = "Win for " + self.player1Name
         else:
             RESULT = "Win for " + self.player2Name
@@ -112,7 +110,4 @@ class Game:
 
     def empate(self):
         return self.pontosPlayer1 == self.pontosPlayer2
-    
-    def acabou(self):
-        return self.pontosPlayer1 >= 4 or self.pontosPlayer2 >= 4 
 
