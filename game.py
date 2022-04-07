@@ -44,6 +44,9 @@ class Game:
         
         if(self.verificarVencedorRound()):
             RESULT = P1res + "-" + P2res
+
+        playerAdvantaged1 = self.p1points > self.p2points and self.p2points >= 3
+        playerAdvantaged2 = self.p2points > self.p1points and self.p1points >= 3
         
         if (playerAdvantaged1 and self.p1points < 4):
             if (self.p1points==2):
